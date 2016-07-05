@@ -1,4 +1,8 @@
 (function(root, factory) {
+  function getInstanceName(instance) {
+    return instance.toString().match(/^function\s*([^(]+)/)[1];
+  }
+
   if ('function' === typeof define && define.amd) {
     define([], factory);
   } else if ('undefined' !== typeof exports) {
@@ -8,10 +12,10 @@
       exports = module.exports = instance;
     }
 
-    exports[instance.name] = instance;
+    exports[getInstanceName(instance)] = instance;
   } else {
     var instance = factory();
-    root[instance.name] = instance;
+    root[getInstanceName(instance)] = instance;
   }
 }('undefined' === typeof window ? this : window, function() {
   "use strict";

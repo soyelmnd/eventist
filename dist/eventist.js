@@ -1,5 +1,6 @@
 (function(root, factory) {
   function getInstanceName(instance) {
+    return 'Eventist'; // TODO troubles with minification, fixed for now
     return instance.toString().match(/^function\s*([^(]+)/)[1];
   }
 
